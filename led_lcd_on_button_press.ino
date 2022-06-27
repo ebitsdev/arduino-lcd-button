@@ -33,13 +33,13 @@ void loop() {
     //...ones, turn led on!
     if ( flag == 0) {
       digitalWrite(ledPin, HIGH);
-      // Change LCD RGB Colors
+          
       for (int i = 0; i < 255; i++) {
-        lcd.setRGB(255, 0, 0);
+        lcd.setRGB(i, 0, 255 - i);
         delay(5);
       }
       for (int i = 0; i < 255; i++) {
-        lcd.setRGB(0, 0, 255);
+        lcd.setRGB(255 - i, i, 0);
         delay(5);
 
       }
@@ -58,5 +58,4 @@ void loop() {
     }
   }
   delay(200); //Small delay
-
 }
