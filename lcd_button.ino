@@ -25,8 +25,8 @@ void setup()
 
 void loop()
 {
-  
- if (digitalRead(!buttonSocket)) {
+
+ if (digitalRead(buttonSocket)) {
     digitalWrite(ledSocket,HIGH);
      lcd.setRGB(175 , 100, 65);
   delay(delayTime);
@@ -35,10 +35,9 @@ void loop()
   lcd.setRGB(0 , 0, 255);
   delay(delayTime);
 //    delay(fadeTime);
-if (digitalRead(buttonSocket)){
-  lcd.setRGB(0 , 0, 0);
+  } else {
+    digitalWrite(ledSocket, LOW);
   }
-  } 
     
   } 
   void clearScreen() {
