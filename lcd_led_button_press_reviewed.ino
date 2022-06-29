@@ -13,20 +13,17 @@
 rgb_lcd lcd;
 int buttonState = 0;
 int flag = 0;
-int delayTime = 100;
-int flashingTime = 500;
-int delay = 0;
 
 void setup() {
-  //Input or output?
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT_PULLUP);
   lcd.begin(16, 2);
-  //  lcd.setRGB(colorR, colorG, colorB);
+  //set lcd brightness to 0 (turn it off)
+  lcd.setRGB(0, 0, 0);
 }
 
 void loop() {
-  //Read button state (pressed or not pressed?)
+  //Read button state (pressed or not pressed)
   buttonState = digitalRead(buttonPin);
 
   //If button pressed...
@@ -34,27 +31,27 @@ void loop() {
     //...ones, turn led on!
     if ( flag == 0) {
       digitalWrite(ledPin, HIGH);
-          
-      for (int i = 0; i < 255; i++) {
-        lcd.setRGB(i, 0, 255 - i);
-        delay(5);
-      }
-      for (int i = 0; i < 255; i++) {
-        lcd.setRGB(255 - i, i, 0);
-        delay(5);
-
-      }
-      for (int i = 0; i < 255; i++) {
-        lcd.setRGB(0, 255 - i, i);
-        delay(5);
-      }
-      lcd.print("This is working");
+      // Set LCD color to blue
+      lcd.setRGB(0, 0, 255);
+      //Wait for a second
+      delay(1000);
+      // Set LCD color to red
+      lcd.setRGB(255, 0, 0);
+      //Wait for a second
+      delay(1000);
+      // Set LCD color to blue
+      lcd.setRGB(0, 0, 255);
+      //Wait for a second
+      delay(1000);
+      lcd.setRGB(255, 0, 0);
+      lcd.clear();
       flag = 1; //change flag variable
     }
     //...twice, turn led off!
     else if ( flag == 1) {
       digitalWrite(ledPin, LOW);
-      lcd.begin(16, 2);
+      //turn off lcd      
+      lcd.setRGB(0, 0, 0);
       flag = 0; //change flag variable again
     }
   }

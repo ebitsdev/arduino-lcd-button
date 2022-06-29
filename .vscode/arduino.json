@@ -1,0 +1,5 @@
+{
+    "port": "/dev/tty.usbmodem11301",
+    "board": "arduino:avr:uno",
+    "sketch": "led_lcd_on_button_press.ino"
+}
